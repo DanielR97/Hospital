@@ -7,7 +7,7 @@ root = Tk()
 root.title("Hospital")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
-width = 1115
+width = 1228
 height = 320
 x = (screen_width / 2) - (width / 2)
 y = (screen_height / 2) - (height / 2)
@@ -77,8 +77,31 @@ def list_patients():
     top.title(" Patients List")
     msg = Message(top, text=patients)
     msg.pack()
-    button = Button(top, text="Dismiss", command=top.destroy)
+    button = Button(top, text="Close", command=top.destroy)
     button.pack()
+    txt_result.config(text="Patients listed", fg="black")
+
+def list_doctors():
+    doctors = ""
+    a = 1
+    database()
+    cursor.execute("SELECT * FROM `hospital_doctor` ORDER BY `id` ASC")
+    fetch = cursor.fetchall()
+    for data in fetch:
+        if a == 1:
+            doctors += ('ID: ' + data[0] + '\nName: ' + data[1] + '\nSurname: ' + data[2] + '\nBirthdate: ' + str(data[3]) + '\nGender: ' + data[4] + '\nRoom: ' + data[5])
+            a = 0
+        else:
+            doctors += ('\n\nID: ' + data[0] + '\nName: ' + data[1] + '\nSurname: ' + data[2] + '\nBirthdate: ' + str(data[3]) + '\nGender: ' + data[4] + '\nRoom: ' + data[5])
+    cursor.close()
+    conn.close()
+    top = Toplevel()
+    top.title(" Doctors List")
+    msg = Message(top, text=doctors)
+    msg.pack()
+    button = Button(top, text="Close", command=top.destroy)
+    button.pack()
+    txt_result.config(text="Doctors listed", fg="black")
 
 def modify():
     database()
@@ -101,6 +124,7 @@ def modify():
     DOCTOR.set("")
     btn_create.config(state=NORMAL)
     btn_list_patients.config(state=NORMAL)
+    btn_list_doctors.config(state=NORMAL)
     btn_modify.config(state=DISABLED)
     btn_delete.config(state=NORMAL)
     txt_result.config(text="Appointment successfully modified", fg="black")
@@ -123,6 +147,7 @@ def on_selected(event):
     DOCTOR.set(selected_item[4])
     btn_create.config(state=DISABLED)
     btn_list_patients.config(state=DISABLED)
+    btn_list_doctors.config(state=DISABLED)
     btn_modify.config(state=NORMAL)
     btn_delete.config(state=DISABLED)
 
@@ -195,6 +220,8 @@ doctor.grid(row=3, column=1)
 btn_create = Button(Buttons, width=10, text="Create", command=create)
 btn_create.pack(side=LEFT)
 btn_list_patients = Button(Buttons, width=10, text="Patients", command=list_patients)
+btn_list_patients.pack(side=LEFT)
+btn_list_patients = Button(Buttons, width=10, text="Doctors", command=list_doctors)
 btn_list_patients.pack(side=LEFT)
 btn_modify = Button(Buttons, width=10, text="Modify", command=modify, state=DISABLED)
 btn_modify.pack(side=LEFT)
