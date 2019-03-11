@@ -59,6 +59,26 @@ def list_appointments():
     conn.close()
     txt_result.config(text="Appointments listed", fg="black")
 
+def list_patients():
+    patients = ""
+    a = 1
+    database()
+    cursor.execute("SELECT * FROM `hospital_patient` ORDER BY `id` ASC")
+    fetch = cursor.fetchall()
+    for data in fetch:
+        if a == 1:
+            patients += ('ID: ' + data[0] + '\nName: ' + data[1] + '\nSurname: ' + data[2] + '\nBirthdate: ' + str(data[3]) + '\nGender: ' + data[4])
+            a = 0
+        else:
+            patients += ('\n\nID: ' + data[0] + '\nName: ' + data[1] + '\nSurname: ' + data[2] + '\nBirthdate: ' + str(data[3]) + '\nGender: ' + data[4])
+    cursor.close()
+    conn.close()
+    top = Toplevel()
+    top.title(" Patients List")
+    msg = Message(top, text=patients)
+    msg.pack()
+    button = Button(top, text="Dismiss", command=top.destroy)
+    button.pack()
 
 def modify():
     database()
@@ -80,7 +100,7 @@ def modify():
     PATIENT.set("")
     DOCTOR.set("")
     btn_create.config(state=NORMAL)
-    btn_list_appointments.config(state=NORMAL)
+    btn_list_patients.config(state=NORMAL)
     btn_modify.config(state=DISABLED)
     btn_delete.config(state=NORMAL)
     txt_result.config(text="Appointment successfully modified", fg="black")
@@ -102,7 +122,7 @@ def on_selected(event):
     PATIENT.set(selected_item[3])
     DOCTOR.set(selected_item[4])
     btn_create.config(state=DISABLED)
-    btn_list_appointments.config(state=DISABLED)
+    btn_list_patients.config(state=DISABLED)
     btn_modify.config(state=NORMAL)
     btn_delete.config(state=DISABLED)
 
@@ -174,8 +194,8 @@ doctor.grid(row=3, column=1)
 
 btn_create = Button(Buttons, width=10, text="Create", command=create)
 btn_create.pack(side=LEFT)
-btn_list_appointments = Button(Buttons, width=10, text="List", command=list_appointments)
-btn_list_appointments.pack(side=LEFT)
+btn_list_patients = Button(Buttons, width=10, text="Patients", command=list_patients)
+btn_list_patients.pack(side=LEFT)
 btn_modify = Button(Buttons, width=10, text="Modify", command=modify, state=DISABLED)
 btn_modify.pack(side=LEFT)
 btn_delete = Button(Buttons, width=10, text="Cancel", command=delete)
