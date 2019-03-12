@@ -19,7 +19,7 @@ root.resizable(True, True)
 
 def database():
     global conn, cursor
-    conn = pymysql.connect(host='localhost', user='doctor', password='0000',
+    conn = pymysql.connect(host='127.0.0.1', user='doctor', password='0000',
                            db='Hospital')
     cursor = conn.cursor()
 
@@ -30,11 +30,11 @@ def create():
     else:
         database()
         cursor.execute(
-            "INSERT INTO `hospital_appointment` (`date`, `reason`, `patient`, `doctor`, `room`)"
-            "VALUES(%s, %s, %s, %s, (SELECT room from hospital_doctor WHERE id=%s ))",
+            "INSERT INTO `Appointment` (`Date`, `Reason`, `Patient`, `Doctor`, `Room`)"
+            "VALUES(%s, %s, %s, %s, (SELECT Room from Doctor WHERE ID=%s ))",
             (str(DATE.get()), str(REASON.get()), str(PATIENT.get()), str(DOCTOR.get()), str(DOCTOR.get())))
         tree.delete(*tree.get_children())
-        cursor.execute("SELECT * FROM `hospital_appointment` ORDER BY `id` ASC")
+        cursor.execute("SELECT * FROM `Appointment` ORDER BY `ID` ASC")
         fetch = cursor.fetchall()
         for data in fetch:
             tree.insert('', 'end', values=(data[0], data[1], data[2], data[3], data[4], data[5]))
@@ -51,7 +51,7 @@ def create():
 def list_appointments():
     tree.delete(*tree.get_children())
     database()
-    cursor.execute("SELECT * FROM `hospital_appointment` ORDER BY `id` ASC")
+    cursor.execute("SELECT * FROM `Appointment` ORDER BY `ID` ASC")
     fetch = cursor.fetchall()
     for data in fetch:
         tree.insert('', 'end', values=(data[0], data[1], data[2], data[3], data[4], data[5]))
@@ -63,7 +63,7 @@ def list_patients():
     patients = ""
     a = 1
     database()
-    cursor.execute("SELECT * FROM `hospital_patient` ORDER BY `id` ASC")
+    cursor.execute("SELECT * FROM `Patient` ORDER BY `ID` ASC")
     fetch = cursor.fetchall()
     for data in fetch:
         if a == 1:
@@ -85,7 +85,7 @@ def list_doctors():
     doctors = ""
     a = 1
     database()
-    cursor.execute("SELECT * FROM `hospital_doctor` ORDER BY `id` ASC")
+    cursor.execute("SELECT * FROM `Doctor` ORDER BY `ID` ASC")
     fetch = cursor.fetchall()
     for data in fetch:
         if a == 1:
@@ -107,12 +107,12 @@ def modify():
     database()
     tree.delete(*tree.get_children())
     cursor.execute(
-        "UPDATE `hospital_appointment` SET `date` = %s, `reason` = %s, `patient` = %s,  `doctor` = %s,"
-        " `room` = (SELECT room from hospital_doctor WHERE id=%s ) WHERE `id` = %s",
+        "UPDATE `Appointment` SET `Date` = %s, `Reason` = %s, `Patient` = %s,  `Doctor` = %s,"
+        " `Room` = (SELECT Room from Doctor WHERE id=%s ) WHERE `ID` = %s",
         (str(DATE.get()), str(REASON.get()), str(PATIENT.get()), str(DOCTOR.get()), str(DOCTOR.get()),
          int(id)))
     conn.commit()
-    cursor.execute("SELECT * FROM `hospital_appointment` ORDER BY `id` ASC")
+    cursor.execute("SELECT * FROM `Appointment` ORDER BY `ID` ASC")
     fetch = cursor.fetchall()
     for data in fetch:
         tree.insert('', 'end', values=(data[0], data[1], data[2], data[3], data[4], data[5]))
@@ -164,7 +164,7 @@ def delete():
             selected_item = contents['values']
             tree.delete(cur_item)
             database()
-            cursor.execute("DELETE FROM `hospital_appointment` WHERE `id` = %d" % selected_item[0])
+            cursor.execute("DELETE FROM `Appointment` WHERE `id` = %d" % selected_item[0])
             conn.commit()
             cursor.close()
             conn.close()
