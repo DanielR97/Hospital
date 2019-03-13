@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Appointments List</title>
+</head>
+<body>
+    <h2>Appointments</h2>
+    <ul>
+        {% for appointment in appointments %}
+        <a href="{% url 'update_appointment' appointment.id %}">
+            <li>Patient {{ appointment.patient }} on {{ appointment.date }}. Reason: {{ appointment.reason }}</li>
+        </a>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_appointment' %}"> Create new appointment</a>
+</body>
+</html>
