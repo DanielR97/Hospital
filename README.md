@@ -9,4 +9,12 @@ ER Diagram
 
 Desktop App preview
 
-![Alt text](https://i.imgur.com/wanUIU2.png "Desktop App")
+![Alt text](https://i.imgur.com/We5xRhw.png "Desktop App")
+
+![Alt text](https://i.imgur.com/8amvlcz.png "Doctors List Desktop App") ![Alt text](https://i.imgur.com/l6EqKyN.png "Patients List Desktop App")
+
+Web App preview
+
+![Alt text](https://i.imgur.com/xMZtJBc.png "List Web App")
+
+![Alt text](https://i.imgur.com/1FuKGWQ.png "Update Web App")
