@@ -13,8 +13,14 @@ Desktop App preview
 
 ![Alt text](https://i.imgur.com/8amvlcz.png "Doctors List Desktop App") ![Alt text](https://i.imgur.com/l6EqKyN.png "Patients List Desktop App")
 
-Web App preview
+Web App (Django template) preview
 
-![Alt text](https://i.imgur.com/xMZtJBc.png "List Web App")
+![Alt text](https://i.imgur.com/xMZtJBc.png "List Django")
 
-![Alt text](https://i.imgur.com/1FuKGWQ.png "Update Web App")
+![Alt text](https://i.imgur.com/1FuKGWQ.png "Update Django")
+
+Basic Web App preview (on development)
+
+![Alt text](https://i.imgur.com/qYDXrvW.png "List Web App")
+
+![Alt text](https://i.imgur.com/InoNCUp.png "Update Web App")
