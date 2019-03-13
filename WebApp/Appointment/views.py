@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Appointment
 from .forms import AppointmentForm
+from django.contrib.auth.decorators import user_passes_test
+def staff_required(login_url=None):
+    return user_passes_test(lambda u: u.is_staff, login_url=login_url)
 
+@staff_required(login_url="../admin")
 def list_appointments(request):
     appointments = Appointment.objects.all()
     return render(request, 'appointments.html', {'appointments': appointments})

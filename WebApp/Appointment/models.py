@@ -13,3 +13,4 @@ class Appointment(models.Model):
     class Meta:
         managed = False
         db_table = 'Appointment'
+
