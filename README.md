@@ -26,3 +26,5 @@ Basic Web App preview (on development)
 ![Alt text](https://i.imgur.com/SyAXxsM.png "Update Web App")
 
 ![Alt text](https://i.imgur.com/advwjt2.png "Stats Web App")
+
+A Pentaho tutorial has been added as an alternative software for Pentaho BI
