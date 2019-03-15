@@ -30,8 +30,9 @@
             margin-top: 5%;
         }
 
-        .form-input {
+        input {
             border-radius: 15px 0px 15px 0px;
+            margin-left: 1%;
         }
 
         /* Hide line arrows in number inputs */
@@ -52,7 +53,14 @@
     <br>
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {% for field in form %}
+
+        <div class="form-group">
+            <label class="control-label" for="{{ field.name }}">{{ field.label }} : </label>{{ field }}
+        </div>
+
+        {% endfor %}
+        <br>
         <button class="btn btn-success" type="submit">Save</button>
     </form>
     <br>
