@@ -25,7 +25,7 @@
         h2 {
             color: rgb(255, 255, 255);
             text-align: center;
-            margin-top: 5%;
+            margin-top: 1%;
         }
 
         table {
@@ -40,22 +40,21 @@
         .headers {
             background-color: rgb(255, 0, 0);
         }
+        
+        .btn {
+            margin-top: 2%;
+        }
     </style>
 </head>
 
 <body>
-    <h2>Appointments</h2>
+    <h2>Appointments Statistics</h2>
     <br>
-    <table border='1'><tr class='headers'><th>ID</th><th>Patient</th><th>Doctor</th><th>Date</th><th>Reason</th><th>Room</th></tr>
-        {% for appointment in appointments %}
-        <tr>
-            <th><a href="{% url 'update_appointment' appointment.id %}">{{ appointment.id }}</a></th><th>{{ appointment.patient }}</th><th>{{ appointment.doctor }}</th><th>{{ appointment.date }}</th><th>{{ appointment.reason }}</th><th>{{ appointment.room }}</th>
-        </tr>
-        {% endfor %}
-    </table>
+    <iframe width="700" height="450" src="https://app.powerbi.com/view?r=eyJrIjoiNDQ0YTkzNWItOWNmYy00ZTg0LWIxYTctYmRmOWQ3MTUzODNlIiwidCI6ImIyYmI3MzFjLTQ2MGQtNDIwZi1hNDc1LTNlZDYxNWE4Mjk4NyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+    <iframe width="464" height="450" frameborder="0" scrolling="no" src="https://alumnosulpgc-my.sharepoint.com/personal/daniel_ramos111_alu_ulpgc_es/_layouts/15/Doc.aspx?sourcedoc={f33b4e22-0720-4318-858d-7c66022f2df6}&action=embedview&ActiveCell='Appointments'!A2&Item=Table1&wdHideGridlines=True&wdInConfigurator=True"></iframe>
     <br>
-    <a class="btn btn-dark" href="{% url 'create_appointment' %}" role="button">New appointment</a>
-    <a class="btn btn-info" href="{% url 'stats' %}" role="button">Statistics</a>
+    <a class="btn btn-info" href="https://alumnosulpgc-my.sharepoint.com/:x:/g/personal/daniel_ramos111_alu_ulpgc_es/ESJOO_MgBxhDhY18ZgIvLfYBWjeSUsrBBQFvXWldwBhG8Q" role="button">View Spreadsheet</a>
+    <a class="btn btn-success" href="https://alumnosulpgc-my.sharepoint.com/:x:/g/personal/daniel_ramos111_alu_ulpgc_es/ESJOO_MgBxhDhY18ZgIvLfYBizf5O31F3LaIb8U8TK79qA" role="button">Edit Spreadsheet</a>
 </body>
 
 </html>

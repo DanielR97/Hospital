@@ -2,15 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
     <title>Appointments</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jQuery, Popper and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- Own CSS -->
+    <style>
+        body  {
+            background-color: rgb(192, 191, 191);
+            font-family: 'Raleway';
+            text-align: center;
+        }
+
+        form {
+            margin-left: 5%;
+        }
+
+        h2 {
+            color: rgb(255, 255, 255);
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        h3 {
+            margin-top: 5%;
+        }
+
+        .form-input {
+            border-radius: 15px 0px 15px 0px;
+        }
+
+        .table-name {
+            margin-left: 5%;
+        }
+
+        table {
+            text-align: center;
+            margin-left: 5%;
+            margin-top: 1%;
+        }
+
+        th { 
+            padding: 5px;
+        }
+
+        .headers {
+            background-color: rgb(255, 0, 0);
+        }
+
+        /* Hide line arrows in number inputs */
+        /* For Firefox */
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
+        /* Webkit browsers like Safari and Chrome */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <form method="POST">
         {% csrf_token %}
         <h2>Do you really want to cancel appointment {{ appointment.id }} ?</h2>
-        <button type="submit">Confirm</button>
+        <br>
+        <button class="btn btn-danger" type="submit">Confirm</button>
+        <a class="btn btn-warning" href="{% url 'list_appointment.s' %}" role="button">Cancel</a>
     </form>
 </body>
+
 </html>

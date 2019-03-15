@@ -10,6 +10,10 @@ def list_appointments(request):
     appointments = Appointment.objects.all()
     return render(request, 'appointments.html', {'appointments': appointments})
 
+
+def stats(request):
+    return render(request, 'appointments-stats.html')
+
 def create_appointment(request):
     form = AppointmentForm(request.POST or None)
     
