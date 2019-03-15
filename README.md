@@ -21,6 +21,8 @@ Web App (Django template) preview
 
 Basic Web App preview (on development)
 
-![Alt text](https://i.imgur.com/qYDXrvW.png "List Web App")
+![Alt text](https://i.imgur.com/teABywF.png "List Web App")
 
-![Alt text](https://i.imgur.com/InoNCUp.png "Update Web App")
+![Alt text](https://i.imgur.com/h4Fg3O3.png "Update Web App")
+
+![Alt text](https://i.imgur.com/advwjt2.png "Stats Web App")
