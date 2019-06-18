@@ -1,6 +1,9 @@
 # Hospital
 ### Project on Computer Network Systems Management
 
+[Sway presentation in Spanish](https://sway.office.com/yqCrxyWKBQdjKzMS)
+
+
 #### Hospital database management via desktop and web applications.
 
 ER Diagram
@@ -26,6 +29,3 @@ Basic Web App preview (on development)
 ![Alt text](https://i.imgur.com/SyAXxsM.png "Update Web App")
 
 ![Alt text](https://i.imgur.com/advwjt2.png "Stats Web App")
-
-
-A PowerApp has also been made
